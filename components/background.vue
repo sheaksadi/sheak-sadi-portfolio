@@ -62,11 +62,23 @@ export default {
       // if (e.screenX > window.innerWidth * .5){
       //   camera.rotateX( camera.rotateX()-1);
       // }
-      camera.rotateX( e.movementY * .002);
+      camera.rotateX(e.movementY * .002  );
       camera.rotateY(e.movementX * .002) ;
 
     };
+    let rotationX = 0.001 ;
+    let rotationY = 0.001 ;
     function animate() {
+      // if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
+      //
+      // }
+
+      camera.rotateX( rotationX );
+      camera.rotateY(rotationY) ;
+      rotationX += .0002
+      rotationY += .0002
+      if (rotationY>.001) rotationY = 0
+      if (rotationX>.001) rotationX = 0
       requestAnimationFrame(animate);
 
       renderer.render(scene, camera);
